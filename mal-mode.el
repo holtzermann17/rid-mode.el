@@ -42,6 +42,8 @@
 
 ;; * Add more words and continue to improve the accuracy
 ;; of the words that are present.
+;;  - draw from http://www.schematherapy.com/id205.htm
+;;  - and http://www.schematherapy.com/id71.htm
 
 (setq abandonment (concat "\\<" (regexp-opt '("instab" "unreliab" "support" "connection" "significant" "strength" "unstable" "outbursts" "imminent" "abandon" "favor" "feel" "leave" "upset" "losing" "they'll" "they're" "addicted" "afraid" "available" "clinging" "coming" "committed" "defenseless" "desperate" "die" "expect" "fighting" "last" "leaves" "leaving"  "nice" "partners" "period" "prefer" "pulling" "regular" "self-absorbed" "short" "soon" "stable" "unpredictable" "worried")  t) "[A-Za-z]*\\>" "\\|" "\\<" (regexp-opt '("count" "drive")  t) "\\>")
 
@@ -49,21 +51,21 @@
 
       emotional-inhibition  (concat "\\<" (regexp-opt '("disapproval" "communic" "emotion" "emotionally" "anger" "warm" "uptight" "unemotional" "spontaneous" "show" "seriously" "positive" "likely" "inside" "gets" "emotions" "embarrassing" "affection" "actions") t) "[A-Za-z]*\\>"  "\\|" "\\<" (regexp-opt '()  t) "\\>")
 
-      enmeshment  (concat "\\<" (regexp-opt '("parent" "involve" "closeness" "survive" "support" "smother" "fuse" "emptiness" "empty" "flounder" "direction" "exist" "parents" "partner" "separate" "each" "living" "intimate" "speak" "separating" "privacy" "overinvolved" "other's" "lives" "keeping" "identity" "distance" "disappointed" "details" "day" "betrayed" )  t) "[A-Za-z]*\\>" "\\|" "\\<" (regexp-opt '("age")  t) "\\>")
+      enmeshment  (concat "\\<" (regexp-opt '("parent" "involve" "closeness" "survive" "support" "smother" "fuse" "emptiness" "empty" "flounder" "exist" "parents" "partner" "separate" "living" "intimate" "speak" "separating" "privacy" "overinvolved" "other's" "lives" "keeping" "identity" "distance" "disappointed" "details" "day" "betrayed" )  t) "[A-Za-z]*\\>" "\\|" "\\<" (regexp-opt '()  t) "\\>")
 
       entitlement  (concat "\\<" (regexp-opt '("superior" "privilege" "bound" "reciproc" "famous" "wealthy" "power" "control" "shouldn't" "tolerate" "tell" "rules" "restrictions" "priorities" "placed" "offer" "normal" "kept" "irritated" "irritable" "hate" "friends" "follow" "conventions" "controlling" "contributions" "constrained" "answer" "ahead")  t) "[A-Za-z]*\\>")
 
       insufficient-self-control  (concat "\\<" (regexp-opt '("goal" "restrain" "impuls" "avoid" "conflict" "responsibility" "easily" "complete" "temper" "stick" "start" "smoking" "slightest" "routine" "resolutions" "regret" "reach" "problem" "persevere" "overeating" "once" "offense" "long-range" "later" "impulsively" "hold" "frustrated" "force" "enjoy" "drinking" "discipline" "cost" "concentrate" "bored" "behaviors" "anything" "allow" "self-control" "self-discipline")  t) "[A-Za-z]*\\>" "\\|" "\\<" (regexp-opt '()  t) "\\>")
 
-      mistrust-abuse  (concat "\\<" (regexp-opt '("hurt" "humiliate" "cheat" "lie" "harm" "unjustified" "negligence" "motives" "before" "advantage" "throughout" "well-intentioned" "used" "truth" "trusting" "trust" "towards" "suspicious" "purposes" "prove" "protect" "presence" "mistreated" "lookout" "intentionally" "honest" "guard" "controlled" "betrays" "belief" "appear" "after" "abused" "mistrust" "abuse" "tests")  t) "[A-Za-z]*\\>" "\\|" "\\<" (regexp-opt '()  t))
+      mistrust-abuse  (concat "\\<" (regexp-opt '("hurt" "humiliate" "cheat" "lie" "harm" "unjustified" "negligence" "motives" "before" "advantage" "throughout" "well-intentioned" "used" "truth" "trusting" "trust" "towards" "suspicious" "purposes" "prove" "protect" "presence" "mistreated" "lookout" "intentionally" "honest" "guard" "controlled" "betrays" "belief" "appear" "after" "mistrust" "abuse" "tests")  t) "[A-Za-z]*\\>" "\\|" "\\<" (regexp-opt '()  t))
 
       subjugation  (concat "\\<" (regexp-opt '("surrender" "coerce" "retaliation" "suppress" "valid" "important" "compliance" "comply" "trapped" "passive" "reject" "wishes" "upper" "rights" "retaliate" "respected" "pleasing" "lengths" "instead" "fear" "demanding" "decisions" "consequences" "confrontations" "choices" "choice" "asking" "account")  t) "[A-Za-z]*\\>" "\\|" "\\<" (regexp-opt '("iron")  t) "\\>")
 
-      self-sacrifice  (concat "\\<" (regexp-opt '("voluntar" "cause" "causing" "guilt" "maintain" "pain" "others" "resentment" "codepend" "happy" "guilty" "busy" "volunteer" "uncomfortable" "taking" "return" "receiving" "present" "minimal" "loved" "giving" "everyone" "ends" "else's" "disappoint" "couldn't" "comfortable" "self")  t) "[A-Za-z]*\\>" "\\|" "\\<" (regexp-opt '()  t) "\\>")
+      self-sacrifice  (concat "\\<" (regexp-opt '("voluntar" "cause" "causing" "guilt" "maintain" "pain" "others" "resentment" "codepend" "happy" "guilty" "busy" "volunteer" "uncomfortable" "taking" "return" "receiving" "minimal" "loved" "giving" "everyone" "ends" "else's" "disappoint" "couldn't" "comfortable" "self")  t) "[A-Za-z]*\\>" "\\|" "\\<" (regexp-opt '()  t) "\\>")
 
       social-undesirability  (concat "\\<" (regexp-opt '("wouldn't" "ugly" "status" "socially" "sexually" "self-conscious" "longer" "level" "fat" "education" "dull"  "career" "boring" "attractive" "undesirab")  t) "[A-Za-z]*\\>" "\\|" "\\<" (regexp-opt '("decent")  t) "\\>")
 
-      unrelenting-standards  (concat "\\<" (regexp-opt '("slow" "satisfying" "attention" "should" "moral" "ethical" "precept" "efficien" "best" "pressure" "suffering" "suffer" "strive" "standards" "settle" "second" "relax" "push" "pleasure" "performance" "perfect" "order" "off" "mistakes" "mistake" "look" "hook" "health" "happiness" "excuses" "done" "deserve" "criticism" "constant" "competitive" "achieve" "accomplish" "accept" "unrelenting" "number")  t) "[A-Za-z]*\\>"  "\\|" "\\<" (regexp-opt '("under" "all")  t) "\\>")
+      unrelenting-standards  (concat "\\<" (regexp-opt '("slow" "satisfying" "attention" "should" "moral" "ethical" "precept" "efficien" "best" "pressure" "suffering" "suffer" "strive" "standards" "settle" "second" "relax" "push" "pleasure" "performance" "perfect" "off" "mistakes" "mistake" "look" "hook" "health" "happiness" "excuses" "done" "deserve" "criticism" "constant" "competitive" "achieve" "accomplish" "accept" "unrelenting")  t) "[A-Za-z]*\\>"  "\\|" "\\<" (regexp-opt '("under" "all" "order")  t) "\\>")
 
       vulnerability  (concat "\\<" (regexp-opt '("might" "serious" "attack" "vagrant" "strike" "street" "sick" "precautions" "physician" "heart" "happening" "financial" "escape" "disaster" "diagnosed" "developing" "destitute" "dangerous" "criminal" "crazy" "concerned" "careful" "being" "becoming" "attacked" "anxiety" "anxious" "vulnerability" "natural" "medical" "AIDS" "catastrophe" "collaps" "crash" "victim")  t) "[A-Za-z]*\\>")
 
